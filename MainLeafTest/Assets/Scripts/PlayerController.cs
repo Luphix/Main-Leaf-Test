@@ -7,9 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     #region Declarações
 
-    [SerializeField] private float walkingSpeed = 1;
-    [SerializeField] private float walkingAcceleration = 1;
-    [SerializeField] private float jumpSpeed = 1;
     [SerializeField] private Text actionTx;
 
     private Animator anim;
@@ -57,8 +54,8 @@ public class PlayerController : MonoBehaviour
 
         #region Ajustes de Balanceamento
 
-        anim.SetFloat("WalkingSpeed", walkingSpeed);
-        anim.SetFloat("JumpSpeed", jumpSpeed);
+        anim.SetFloat("WalkingSpeed", GameManager.playerMoveSpeed);
+        anim.SetFloat("JumpSpeed", GameManager.playerJumpSpeed);
 
         #endregion
 
@@ -73,19 +70,16 @@ public class PlayerController : MonoBehaviour
                 {
                     if (interact.GetComponent<Box>().Player == null)
                     {
-                        //anim.SetFloat("Forward", 0f);
                         interact.GetComponent<Box>().Player = gameObject;
                         interact.GetComponent<Box>().setOffset();
-                      
-
 
                         //Códigos para mover as caixas somente para frente e para trás (empurrar e puxar) e não para as diagonais ou para os lados:
 
                         if ((transform.position.z - interact.transform.position.z) < -0.7f)
                         {
-                            if(Mathf.Abs(transform.position.z - interact.transform.position.z) < 0.96f)
+                            if(Mathf.Abs(transform.position.z - interact.transform.position.z) < 0.96f)    
                             {
-                                interact.transform.parent.position += new Vector3(0, 0, 0.01f);
+                                interact.transform.parent.position += new Vector3(0, 0, 0.01f);                    //Código para ajustar o offset da caixa para não empurrar o jogador para trás
                                 interact.GetComponent<Box>().setOffset();
                             }
                             Debug.Log(Mathf.Abs(transform.position.z - interact.transform.position.z));
@@ -172,17 +166,17 @@ public class PlayerController : MonoBehaviour
         {
             if (interact && interact.tag == "Box" && interact.GetComponent<Box>().Player == gameObject)
             {
-                anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), moveSpeed * 0.6f, walkingAcceleration * 0.1f));   //Aceleração suave ao iniciar o movimento   
+                anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), moveSpeed * 0.6f, GameManager.playerMoveAcceleration * 0.1f));   //Aceleração suave ao iniciar o movimento   
             }
             else if(anim.GetBool("OnGround") && anim.GetFloat("Jump") < 0f)
             {
-                anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), moveSpeed, walkingAcceleration * 0.1f));   //Aceleração suave ao iniciar o movimento   
+                anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), moveSpeed, GameManager.playerMoveAcceleration * 0.1f));   //Aceleração suave ao iniciar o movimento   
             }
                                                                                            
         }
         else
         {
-            anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), 0, walkingAcceleration * 0.1f));   //Desaceleração suave ao parar o movimento                                                          
+            anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), 0, GameManager.playerMoveAcceleration * 0.1f));   //Desaceleração suave ao parar o movimento                                                          
         }
 
 

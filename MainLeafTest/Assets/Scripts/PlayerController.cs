@@ -55,8 +55,8 @@ public class PlayerController : MonoBehaviour
 
         #region Ajustes de Balanceamento
 
-        anim.SetFloat("WalkingSpeed", GameManager.playerMoveSpeed);
-        anim.SetFloat("JumpSpeed", GameManager.playerJumpSpeed);
+        anim.SetFloat("WalkingSpeed", GameController.playerMoveSpeed);
+        anim.SetFloat("JumpSpeed", GameController.playerJumpSpeed);
 
         #endregion
 
@@ -168,11 +168,11 @@ public class PlayerController : MonoBehaviour
         {
             if (interact && interact.tag == "Box" && interact.GetComponent<Box>().Player == gameObject)
             {
-                anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), moveSpeed * 0.6f, GameManager.playerMoveAcceleration * 0.1f));   //Aceleração suave ao iniciar o movimento   
+                anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), moveSpeed * 0.6f, GameController.playerMoveAcceleration * 0.1f));   //Aceleração suave ao iniciar o movimento   
             }
             else if(anim.GetBool("OnGround") && anim.GetFloat("Jump") < 0f)
             {
-                anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), moveSpeed, GameManager.playerMoveAcceleration * 0.1f));   //Aceleração suave ao iniciar o movimento   
+                anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), moveSpeed, GameController.playerMoveAcceleration * 0.1f));   //Aceleração suave ao iniciar o movimento   
             }
             else
             {
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), 0, GameManager.playerMoveAcceleration * 0.1f));   //Desaceleração suave ao parar o movimento                                                          
+            anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), 0, GameController.playerMoveAcceleration * 0.1f));   //Desaceleração suave ao parar o movimento                                                          
         }
 
 

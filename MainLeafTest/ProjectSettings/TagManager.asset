@@ -10,6 +10,7 @@ TagManager:
   - HUD
   - Death
   - Wall
+  - Manager
   layers:
   - Default
   - TransparentFX

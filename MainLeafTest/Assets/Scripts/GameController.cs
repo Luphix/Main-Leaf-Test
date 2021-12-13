@@ -11,6 +11,10 @@ public static class GameController
     public static int puzzleCount;
     public static int puzzleMaxCount;
     public static int coins = 0;
+    public static float playerMoveSpeed;
+    public static float playerMoveAcceleration;
+    public static float playerJumpSpeed;
+    public static float enemiesMoveSpeed;
 
     public static void loadScene(string name)
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private int enemyType;
-    [Range(0,2)] [SerializeField] private float walkingSpeed = 1;
+    
     private Animator anim;
     void Start()
     {
@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     {
         if(enemyType == 1)
         {
-            anim.SetFloat("Forward", walkingSpeed * 0.5f);
+            anim.SetFloat("Forward", GameController.enemiesMoveSpeed * 0.5f);
             if((transform.localPosition.z >= 1.5f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z >= 1.5f))
             {
                 transform.rotation = Quaternion.Euler(0, 90, 0);

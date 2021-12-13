@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+
     void Awake()
     {
         if(GameObject.FindWithTag("Player") && (GameObject.FindWithTag("Player") != gameObject))
@@ -138,7 +139,8 @@ public class PlayerController : MonoBehaviour
                         interact = null;
                         actionTx.text = "";
                         transform.localRotation = Quaternion.Euler(0, 0, 0);
-
+                        rb.velocity += Vector3.up * 6f;
+                        rb.velocity += Vector3.forward * 8f;
                         anim.SetBool("OnGround", false);
                         anim.SetFloat("Forward", 0.5f);
                         anim.SetFloat("Jump", 5f);
@@ -172,6 +174,10 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), moveSpeed, GameManager.playerMoveAcceleration * 0.1f));   //Aceleração suave ao iniciar o movimento   
             }
+            else
+            {
+                transform.Translate(Vector3.forward * 0.05f);
+            }
                                                                                            
         }
         else
@@ -182,8 +188,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && anim.GetBool("OnGround"))
         {
+            rb.velocity = Vector3.zero;
             anim.SetFloat("Forward", 0f);
             anim.SetBool("OnGround", false);
+            rb.velocity += Vector3.up * 6f;
+            
             anim.SetFloat("Jump", 5f);
             jumpVar = 5f;
         }
@@ -196,7 +205,7 @@ public class PlayerController : MonoBehaviour
 
         #endregion
 
-        
+
         #region Controle de Direção
 
 
@@ -258,7 +267,6 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-
 
 
         #endregion

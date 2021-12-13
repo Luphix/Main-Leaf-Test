@@ -1498,7 +1498,7 @@ ModelImporter:
       takeName: _207_Idle_JumpUpMedium_NoHands1Step_Idle
       internalID: 0
       firstFrame: 127
-      lastFrame: 129
+      lastFrame: 128
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1509,7 +1509,7 @@ ModelImporter:
       loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
@@ -1823,7 +1823,7 @@ ModelImporter:
       takeName: _207_Idle_JumpUpMedium_NoHands1Step_Idle
       internalID: 0
       firstFrame: 125
-      lastFrame: 127
+      lastFrame: 126
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1832,9 +1832,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
@@ -2148,7 +2148,7 @@ ModelImporter:
       takeName: _207_Idle_JumpUpMedium_NoHands1Step_Idle
       internalID: 0
       firstFrame: 131
-      lastFrame: 133
+      lastFrame: 132
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2157,9 +2157,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -2467,7 +2467,7 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 56
     isReadable: 1
   meshes:
     lODScreenPercentages: []

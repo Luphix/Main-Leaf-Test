@@ -11,10 +11,12 @@ public class GameManager : MonoBehaviour
     public static float playerMoveSpeed;
     public static float playerMoveAcceleration;
     public static float playerJumpSpeed;
+
     void Awake()
     {
 
     }
+
     void FixedUpdate()
     {
         playerJumpSpeed = PlayerJumpSpeed;

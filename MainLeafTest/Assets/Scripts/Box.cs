@@ -23,12 +23,39 @@ public class Box : MonoBehaviour
     
     void FixedUpdate()
     {
-        if(destination == false)
+        
+
+        if (destination == false)
         {
             if (Player)
             {
+                if (box.transform.position.x >= -0.19f && box.transform.position.z >= -2.37f && !(box.transform.position.x > -0.11f && box.transform.position.z > 0.92f))
+                {
+                    box.transform.position = new Vector3(Player.transform.position.x + boxOffset.x, box.transform.position.y, Player.transform.position.z + boxOffset.z);
+                }
+                else
+                {
+                    if (box.transform.position.x < -0.19f)
+                    {
+                        box.transform.position = new Vector3(-0.18f, box.transform.position.y, box.transform.position.z);
+                    }
+                    if (box.transform.position.z < -2.37f)
+                    {
+                        box.transform.position = new Vector3(box.transform.position.x, box.transform.position.y, -2.36f);
+                    }
+                    if(box.transform.position.x > -0.11f && box.transform.position.x <= -0.08f && box.transform.position.z > 0.92f)
+                    {
+                        box.transform.position = new Vector3(-0.12f, box.transform.position.y, box.transform.position.z);
+                    }
+                    if (box.transform.position.x > -0.08f && box.transform.position.z > 0.92f)
+                    {
+                        box.transform.position = new Vector3(box.transform.position.x, box.transform.position.y, 0.9f);
+                    }
+                }
+               
+
                 rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
-                box.transform.position = new Vector3(Player.transform.position.x + boxOffset.x, box.transform.position.y, Player.transform.position.z + boxOffset.z);
+                
                 if (!Input.GetMouseButton(0))
                 {
                     Player = null;
@@ -36,6 +63,14 @@ public class Box : MonoBehaviour
             }
             else
             {
+                if (box.transform.position.x < -0.19f)
+                {
+                    box.transform.position = new Vector3(-0.18f, box.transform.position.y, box.transform.position.z);
+                }
+                if (box.transform.position.z < -2.37f)
+                {
+                    box.transform.position = new Vector3(box.transform.position.x, box.transform.position.y, -2.36f);
+                }
                 rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
             }
         }
@@ -48,6 +83,7 @@ public class Box : MonoBehaviour
         destinPos = vet;
         destination = true;
         rb.velocity = Vector3.zero;
+        rb.Sleep();
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         box.transform.position = vet;
     }

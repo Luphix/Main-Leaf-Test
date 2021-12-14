@@ -5,8 +5,15 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private int enemyType;
-    
+    private bool enemyStopped = false;
+    private bool changeState = true;
     private Animator anim;
+
+    void Awake()
+    {
+        StartCoroutine("change");
+    }
+
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
@@ -14,19 +21,57 @@ public class EnemyController : MonoBehaviour
         {
             transform.localPosition = new Vector3(-1.52f, 0, 1.52f);
         }
+        else if(enemyType == 2)
+        {
+            transform.localPosition = new Vector3(-1.52f, 0, -2.7f);
+        }
+        else if (enemyType == 3)
+        {
+            transform.localPosition = new Vector3(-1.52f, 0, 2.7f);
+        }
+
     }
 
+    IEnumerator change()
+    {
+        while (changeState)
+        {
+            if (enemyStopped)
+            {
+                yield return new WaitForSeconds(3f * 60f * Time.deltaTime);
+            }
+            else
+            {
+                yield return new WaitForSeconds(6f * 60f * Time.deltaTime);
+            }
+            enemyStopped = !enemyStopped;
+        }
+    }
 
     void FixedUpdate()
     {
-        if(enemyType == 1)
+        if (!enemyStopped)
         {
-            anim.SetFloat("Forward", GameController.enemiesMoveSpeed * 0.5f);
-            if((transform.localPosition.z >= 1.5f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z >= 1.5f))
+            anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), GameController.enemiesMoveSpeed * 0.5f, 0.1f));
+        }
+        else
+        {
+            anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), 0, 0.1f));
+        }
+
+        EnemyRot();
+
+    }
+
+    void EnemyRot()
+    {
+        if (enemyType == 1)
+        {
+            if ((transform.localPosition.z >= 1.5f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z >= 1.5f))
             {
                 transform.rotation = Quaternion.Euler(0, 90, 0);
             }
-            else if((transform.localPosition.z <= -1.5f && transform.localPosition.x >= 1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z <= -1.5f))
+            else if ((transform.localPosition.z <= -1.5f && transform.localPosition.x >= 1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z <= -1.5f))
             {
                 transform.rotation = Quaternion.Euler(0, -90, 0);
             }
@@ -34,12 +79,31 @@ public class EnemyController : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
-            else if((transform.localPosition.z <= -1.5f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.z > -1.5f && transform.localPosition.z < 1.5f) && transform.localPosition.x <= -1.5f))
+            else if ((transform.localPosition.z <= -1.5f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.z > -1.5f && transform.localPosition.z < 1.5f) && transform.localPosition.x <= -1.5f))
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
- 
         }
+        else if(enemyType == 2 || enemyType == 3)
+        {
+            if ((transform.localPosition.z >= 2.7f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z >= 2.7f))
+            {
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else if ((transform.localPosition.z <= -2.7f && transform.localPosition.x >= 1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z <= -2.7f))
+            {
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+            }
+            else if ((transform.localPosition.z >= 2.7f && transform.localPosition.x >= 1.5f) || ((transform.localPosition.z > -2.7f && transform.localPosition.z < 2.7f) && transform.localPosition.x >= 1.5f))
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else if ((transform.localPosition.z <= -2.7f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.z > -2.7f && transform.localPosition.z < 2.7f) && transform.localPosition.x <= -1.5f))
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+        }
+           
     }
 
 

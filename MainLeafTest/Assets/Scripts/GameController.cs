@@ -15,6 +15,7 @@ public static class GameController
     public static float playerMoveAcceleration;
     public static float playerJumpSpeed;
     public static float enemiesMoveSpeed;
+    public static Color[] coinColorByValue = new Color[5];
 
     public static void loadScene(string name)
     {

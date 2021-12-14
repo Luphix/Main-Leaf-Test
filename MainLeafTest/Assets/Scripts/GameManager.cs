@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public float PlayerMoveAcceleration = 1;
     public float PlayerJumpSpeed = 1;
     [Range(0, 2)] public float EnemiesMoveSpeed = 1;
+    public Color[] CoinColorByValue;
 
     void Awake()
     {
@@ -24,5 +25,10 @@ public class GameManager : MonoBehaviour
         GameController.playerMoveAcceleration = PlayerMoveAcceleration;
         GameController.playerMoveSpeed = PlayerMoveSpeed;
         GameController.enemiesMoveSpeed = EnemiesMoveSpeed;
+        for (int i = 0; i < CoinColorByValue.Length; i++)
+        {
+            GameController.coinColorByValue[i] = CoinColorByValue[i];
+        }
+        
     }
 }

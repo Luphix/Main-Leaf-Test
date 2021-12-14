@@ -280,9 +280,21 @@ public class PlayerController : MonoBehaviour
             {
                 GameController.stagePart = 1;
             }
-            else if(transform.position.z >= 4)
+            else if(transform.position.z >= 4 && transform.position.z < 20)
             {
                 GameController.stagePart = 2;
+            }
+            else if (transform.position.z >= 20 && transform.position.z < 36)
+            {
+                GameController.stagePart = 3;
+            }
+            else if (transform.position.z >= 36 && transform.position.z < 52)
+            {
+                GameController.stagePart = 4;
+            }
+            else if (transform.position.z >= 52)
+            {
+                GameController.stagePart = 5;
             }
         }
 

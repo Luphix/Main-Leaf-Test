@@ -8,9 +8,35 @@ public class IgnoreCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision Col)
     {
-        if (Col.gameObject.tag == Tag)
+        if(gameObject.tag == "Wall")
         {
-            Physics.IgnoreCollision(Col.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+            if (Col.gameObject.tag == Tag)
+            {
+                Physics.IgnoreCollision(Col.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+            }
+        }
+    }
+
+    void OnCollisionStay(Collision Col)
+    {
+        if(gameObject.name == "Box")
+        {
+            if (Col.gameObject.tag == "Wall")
+            {
+                Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), GameObject.FindWithTag("Player").GetComponent<Collider>(), false);
+            }
+        }
+    }
+
+
+    void OnCollisionExit(Collision Col)
+    {
+        if (gameObject.name == "Box")
+        {
+            if (Col.gameObject.tag == "Wall")
+            {
+                Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), GameObject.FindWithTag("Player").GetComponent<Collider>());
+            }
         }
     }
 }

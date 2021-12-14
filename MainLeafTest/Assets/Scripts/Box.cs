@@ -32,9 +32,11 @@ public class Box : MonoBehaviour
                 if (box.transform.position.x >= -0.19f && box.transform.position.z >= -2.37f && !(box.transform.position.x > -0.11f && box.transform.position.z > 0.92f))
                 {
                     box.transform.position = new Vector3(Player.transform.position.x + boxOffset.x, box.transform.position.y, Player.transform.position.z + boxOffset.z);
+
                 }
                 else
                 {
+
                     if (box.transform.position.x < -0.19f)
                     {
                         box.transform.position = new Vector3(-0.18f, box.transform.position.y, box.transform.position.z);

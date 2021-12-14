@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject caughtMsg;
     [SerializeField] private Text coinTx;
+    [SerializeField] private GameObject instructions;
     private GameObject player;
     
 
@@ -32,6 +33,7 @@ public class UIController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape) && !GameController.gameIsPaused && !caughtMsg.activeSelf)
             {
                 Pause();
+                instructions.SetActive(false);
             }
             if (Input.GetMouseButtonDown(0) && caughtMsg.activeSelf)
             {

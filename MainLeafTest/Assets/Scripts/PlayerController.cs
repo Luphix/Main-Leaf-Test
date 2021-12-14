@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Text actionTx;
+    private CapsuleCollider playerCollider;
     private Animator anim;
     private Rigidbody rb;
     private float moveSpeed = 1;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        playerCollider = gameObject.GetComponent<CapsuleCollider>();
         anim = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         actionTx.text = "";
@@ -45,6 +47,16 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetFloat("WalkingSpeed", GameController.playerMoveSpeed);
 
+        if (anim.GetBool("Crouch"))
+        {
+            playerCollider.center = new Vector3(0,0.37f,0);
+            playerCollider.height = 0.8f;
+        }
+        else
+        {
+            playerCollider.center = new Vector3(0, 0.78f, 0);
+            playerCollider.height = 1.62f;
+        }
         
 
         if (!GameController.playerBusy)
@@ -143,6 +155,17 @@ public class PlayerController : MonoBehaviour
 
             #region Movimento
 
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                if (anim.GetBool("OnGround"))
+                {
+                    anim.SetBool("Crouch", true);
+                }
+            }
+            else
+            {
+                anim.SetBool("Crouch", false);
+            }
 
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
@@ -166,7 +189,7 @@ public class PlayerController : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.Space) && anim.GetBool("OnGround"))
+            if (Input.GetKeyDown(KeyCode.Space) && anim.GetBool("OnGround") && !anim.GetBool("Crouch"))
             {
                 rb.velocity = Vector3.zero;
                 anim.SetFloat("Forward", 0f);
@@ -295,6 +318,7 @@ public class PlayerController : MonoBehaviour
         GameController.playerBusy = true;
         rb.useGravity = false;
         interact = null;
+        anim.SetBool("Crouch", false);
         actionTx.text = "";
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         anim.SetFloat("Forward", 0f);

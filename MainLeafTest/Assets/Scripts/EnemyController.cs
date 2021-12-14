@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private int enemyType;
+    [SerializeField] private int enemyStart;
     private bool enemyStopped = false;
     private bool changeState = true;
     private Animator anim;
+    public float xMaxPos;
+    public float zMaxPos;
 
     void Awake()
     {
@@ -17,22 +19,15 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        if(enemyType == 1)
+        if(enemyStart == 1)
         {
-            transform.localPosition = new Vector3(-1.52f, 0, 1.52f);
+            transform.localPosition = new Vector3(-(xMaxPos + 0.02f), 0, zMaxPos + 0.02f);
         }
-        else if(enemyType == 2)
+        else if(enemyStart == 2)
         {
-            transform.localPosition = new Vector3(-1.52f, 0, -2.7f);
+            transform.localPosition = new Vector3(xMaxPos + 0.02f, 0, -(zMaxPos + 0.02f));
         }
-        else if (enemyType == 3)
-        {
-            transform.localPosition = new Vector3(-1.52f, 0, 2.7f);
-        }
-        else if (enemyType == 3)
-        {
-            transform.localPosition = new Vector3(-1.2f, 0, 1.2f);
-        }
+        
 
     }
 
@@ -63,91 +58,25 @@ public class EnemyController : MonoBehaviour
             anim.SetFloat("Forward", Mathf.Lerp(anim.GetFloat("Forward"), 0, 0.1f));
         }
 
-        EnemyRot();
-
-    }
-
-    void EnemyRot()
-    {
-        if (enemyType == 1)
+        if ((transform.localPosition.z >= zMaxPos && transform.localPosition.x <= -xMaxPos) || ((transform.localPosition.x > -xMaxPos && transform.localPosition.x < xMaxPos) && transform.localPosition.z >= zMaxPos))
         {
-            if ((transform.localPosition.z >= 1.5f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z >= 1.5f))
-            {
-                transform.rotation = Quaternion.Euler(0, 90, 0);
-            }
-            else if ((transform.localPosition.z <= -1.5f && transform.localPosition.x >= 1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z <= -1.5f))
-            {
-                transform.rotation = Quaternion.Euler(0, -90, 0);
-            }
-            else if ((transform.localPosition.z >= 1.5 && transform.localPosition.x >= 1.5f) || ((transform.localPosition.z > -1.5f && transform.localPosition.z < 1.5f) && transform.localPosition.x >= 1.5f))
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
-            else if ((transform.localPosition.z <= -1.5f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.z > -1.5f && transform.localPosition.z < 1.5f) && transform.localPosition.x <= -1.5f))
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
+            transform.rotation = Quaternion.Euler(0, 90, 0);
         }
-        else if(enemyType == 2 || enemyType == 3)
+        else if ((transform.localPosition.z <= -zMaxPos && transform.localPosition.x >= xMaxPos) || ((transform.localPosition.x > -xMaxPos && transform.localPosition.x < xMaxPos) && transform.localPosition.z <= -zMaxPos))
         {
-            if ((transform.localPosition.z >= 2.7f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z >= 2.7f))
-            {
-                transform.rotation = Quaternion.Euler(0, 90, 0);
-            }
-            else if ((transform.localPosition.z <= -2.7f && transform.localPosition.x >= 1.5f) || ((transform.localPosition.x > -1.5f && transform.localPosition.x < 1.5f) && transform.localPosition.z <= -2.7f))
-            {
-                transform.rotation = Quaternion.Euler(0, -90, 0);
-            }
-            else if ((transform.localPosition.z >= 2.7f && transform.localPosition.x >= 1.5f) || ((transform.localPosition.z > -2.7f && transform.localPosition.z < 2.7f) && transform.localPosition.x >= 1.5f))
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
-            else if ((transform.localPosition.z <= -2.7f && transform.localPosition.x <= -1.5f) || ((transform.localPosition.z > -2.7f && transform.localPosition.z < 2.7f) && transform.localPosition.x <= -1.5f))
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
+            transform.rotation = Quaternion.Euler(0, -90, 0);
         }
-
-        else if (enemyType == 4)
+        else if ((transform.localPosition.z >= zMaxPos && transform.localPosition.x >= xMaxPos) || ((transform.localPosition.z > -zMaxPos && transform.localPosition.z < zMaxPos) && transform.localPosition.x >= xMaxPos))
         {
-            if ((transform.localPosition.z >= 1 && transform.localPosition.x <= -1) || ((transform.localPosition.x > -1 && transform.localPosition.x < 1) && transform.localPosition.z >= 1))
-            {
-                transform.rotation = Quaternion.Euler(0, 90, 0);
-            }
-            else if ((transform.localPosition.z <= -1 && transform.localPosition.x >= 1) || ((transform.localPosition.x > -1 && transform.localPosition.x < 1) && transform.localPosition.z <= -1))
-            {
-                transform.rotation = Quaternion.Euler(0, -90, 0);
-            }
-            else if ((transform.localPosition.z >= 1 && transform.localPosition.x >= 1) || ((transform.localPosition.z > -1 && transform.localPosition.z < 1) && transform.localPosition.x >= 1))
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
-            else if ((transform.localPosition.z <= -1 && transform.localPosition.x <= -1) || ((transform.localPosition.z > -1 && transform.localPosition.z < 1) && transform.localPosition.x <= -1))
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        else if (enemyType == 5)
+        else if ((transform.localPosition.z <= -zMaxPos && transform.localPosition.x <= -xMaxPos) || ((transform.localPosition.z > -zMaxPos && transform.localPosition.z < zMaxPos) && transform.localPosition.x <= -xMaxPos))
         {
-            if ((transform.localPosition.z >= 4 && transform.localPosition.x <= -6) || ((transform.localPosition.x > -6 && transform.localPosition.x < 6) && transform.localPosition.z >= 4))
-            {
-                transform.rotation = Quaternion.Euler(0, 90, 0);
-            }
-            else if ((transform.localPosition.z <= -4 && transform.localPosition.x >= 6) || ((transform.localPosition.x > -6 && transform.localPosition.x < 6) && transform.localPosition.z <= -4))
-            {
-                transform.rotation = Quaternion.Euler(0, -90, 0);
-            }
-            else if ((transform.localPosition.z >= 4 && transform.localPosition.x >= 6) || ((transform.localPosition.z > -4 && transform.localPosition.z < 4) && transform.localPosition.x >= 6))
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
-            else if ((transform.localPosition.z <= -4 && transform.localPosition.x <= -6) || ((transform.localPosition.z > -4 && transform.localPosition.z < 4) && transform.localPosition.x <= -6))
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
     }
+
 
 
 }

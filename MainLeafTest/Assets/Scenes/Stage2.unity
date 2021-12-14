@@ -5607,7 +5607,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e1305bad05e84b9d9c7e3a05f1482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 5
+  enemyStart: 1
+  xMaxPos: 6
+  zMaxPos: 4
 --- !u!95 &399286213
 Animator:
   serializedVersion: 3
@@ -10240,7 +10242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e1305bad05e84b9d9c7e3a05f1482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 1
+  enemyStart: 2
+  xMaxPos: 1.5
+  zMaxPos: 1.5
 --- !u!95 &724973371
 Animator:
   serializedVersion: 3
@@ -18382,7 +18386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e1305bad05e84b9d9c7e3a05f1482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 1
+  enemyStart: 1
+  xMaxPos: 1.5
+  zMaxPos: 1.5
 --- !u!95 &1343771013
 Animator:
   serializedVersion: 3
@@ -18621,7 +18627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e1305bad05e84b9d9c7e3a05f1482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 2
+  enemyStart: 2
+  xMaxPos: 1.5
+  zMaxPos: 2.7
 --- !u!95 &1353005267
 Animator:
   serializedVersion: 3
@@ -20122,7 +20130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e1305bad05e84b9d9c7e3a05f1482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 4
+  enemyStart: 1
+  xMaxPos: 1
+  zMaxPos: 1
 --- !u!95 &1461186531
 Animator:
   serializedVersion: 3
@@ -23328,7 +23338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e1305bad05e84b9d9c7e3a05f1482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 3
+  enemyStart: 1
+  xMaxPos: 1.5
+  zMaxPos: 2.7
 --- !u!95 &1696309824
 Animator:
   serializedVersion: 3
@@ -23523,7 +23535,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e1305bad05e84b9d9c7e3a05f1482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 5
+  enemyStart: 2
+  xMaxPos: 6
+  zMaxPos: 4
 --- !u!95 &1700792903
 Animator:
   serializedVersion: 3
@@ -30322,7 +30336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e1305bad05e84b9d9c7e3a05f1482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 1
+  enemyStart: 1
+  xMaxPos: 1.5
+  zMaxPos: 1.5
 --- !u!1 &5774013495248602100
 GameObject:
   m_ObjectHideFlags: 0

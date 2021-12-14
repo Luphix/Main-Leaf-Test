@@ -32,20 +32,20 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
-    void FixedUpdate()
+    void Update()
     {
-
-        #region Ajustes de Balanceamento
-
-        anim.SetFloat("WalkingSpeed", GameController.playerMoveSpeed);
-
-        #endregion
-
         if (anim.GetFloat("Jump") > -9f)
         {
             anim.SetFloat("Jump", jumpVar);
             jumpVar -= 0.3f * 60f * Time.deltaTime;
         }
+    }
+
+    void FixedUpdate()
+    {
+        anim.SetFloat("WalkingSpeed", GameController.playerMoveSpeed);
+
+        
 
         if (!GameController.playerBusy)
         {

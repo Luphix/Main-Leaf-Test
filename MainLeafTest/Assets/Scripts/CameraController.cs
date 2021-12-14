@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     private Transform playerTransform;
     [SerializeField] private Vector3 camOffset;
     [Range(0.01f, 1.0f)] public float smoothFactor;
-    private float rotationSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 5f;
 
     void Awake()
     {
@@ -36,8 +36,8 @@ public class CameraController : MonoBehaviour
 
                 if (GameController.stage == 1)  
                 {
-                    Quaternion camTurn = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotationSpeed, Vector3.up);
-                    camOffset = camTurn * camOffset;
+                    Quaternion camTurnX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotationSpeed, Vector3.up);
+                    camOffset = camTurnX * camOffset;
                     Vector3 novaPos = playerTransform.position + camOffset;
                     transform.position = Vector3.Slerp(transform.position, novaPos, smoothFactor);
                     transform.LookAt(new Vector3(playerTransform.position.x, playerTransform.position.y + 1, playerTransform.position.z));

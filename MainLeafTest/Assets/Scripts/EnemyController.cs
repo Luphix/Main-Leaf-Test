@@ -29,6 +29,10 @@ public class EnemyController : MonoBehaviour
         {
             transform.localPosition = new Vector3(-1.52f, 0, 2.7f);
         }
+        else if (enemyType == 3)
+        {
+            transform.localPosition = new Vector3(-1.2f, 0, 1.2f);
+        }
 
     }
 
@@ -103,7 +107,27 @@ public class EnemyController : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
         }
-           
+
+        else if (enemyType == 4)
+        {
+            if ((transform.localPosition.z >= 1 && transform.localPosition.x <= -1) || ((transform.localPosition.x > -1 && transform.localPosition.x < 1) && transform.localPosition.z >= 1))
+            {
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else if ((transform.localPosition.z <= -1 && transform.localPosition.x >= 1) || ((transform.localPosition.x > -1 && transform.localPosition.x < 1) && transform.localPosition.z <= -1))
+            {
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+            }
+            else if ((transform.localPosition.z >= 1 && transform.localPosition.x >= 1) || ((transform.localPosition.z > -1 && transform.localPosition.z < 1) && transform.localPosition.x >= 1))
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else if ((transform.localPosition.z <= -1 && transform.localPosition.x <= -1) || ((transform.localPosition.z > -1 && transform.localPosition.z < 1) && transform.localPosition.x <= -1))
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+        }
+
     }
 
 

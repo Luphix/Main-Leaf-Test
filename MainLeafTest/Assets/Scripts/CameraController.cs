@@ -89,6 +89,16 @@ public class CameraController : MonoBehaviour
                         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(35, 70, 0), 0.1f);
                         transform.position = Vector3.Lerp(transform.position, new Vector3(-5, 4, 38 + (playerTransform.position.z - 36) / 2), 0.1f);
                     }
+                    else if (GameController.stagePart == 5) //Parte 5: posição Z da Camera varia de 54 a 62 enquanto a posição Z do jogador varia de 52 a 68
+                    {
+                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(35, 70, 0), 0.1f);
+                        transform.position = Vector3.Lerp(transform.position, new Vector3(-5, 4, 54 + (playerTransform.position.z - 52) / 2), 0.1f);
+                    }
+                    else if (GameController.stagePart == 6) //Parte 6: posição Z da Camera varia de 70 a 78 enquanto a posição Z do jogador varia de 68 a 84
+                    {
+                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(45, 90, 0), 0.1f);
+                        transform.position = Vector3.Lerp(transform.position, new Vector3(-4, 5, 70 + (playerTransform.position.z - 68) / 2), 0.1f);
+                    }
 
                 }
 

@@ -30,9 +30,13 @@ public static class GameController
         {
             GameController.stage = 1;
         }
-        else
+        else if(name == "Stage2")
         {
             GameController.stage = 2;
+        }
+        else
+        {
+            GameController.stage = 3;
         }
             
     }

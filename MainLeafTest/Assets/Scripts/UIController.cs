@@ -8,39 +8,42 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject caughtMsg;
     [SerializeField] private Text coinTx;
-
     private GameObject player;
     
 
     void Awake()
     {
-        if (GameObject.FindWithTag("HUD") && (GameObject.FindWithTag("HUD") != gameObject))
+        if (GameController.stage < 3)
         {
-            Destroy(gameObject);
+            if (GameObject.FindWithTag("HUD") && (GameObject.FindWithTag("HUD") != gameObject))
+            {
+                Destroy(gameObject);
+            }
+            player = GameObject.FindWithTag("Player");
+            DontDestroyOnLoad(gameObject);
         }
-        player = GameObject.FindWithTag("Player");
-        DontDestroyOnLoad(gameObject);
     }
-
-
 
     void Update()
     {
-        coinTx.text = GameController.coins.ToString();
-        if(Input.GetKeyDown(KeyCode.Escape) && !GameController.gameIsPaused && !caughtMsg.activeSelf)
+        if(GameController.stage < 3)
         {
-            Pause();
-        }
-        if(Input.GetMouseButtonDown(0) && caughtMsg.activeSelf)
-        {
-            Time.timeScale = 1.0f;
-            caughtMsg.SetActive(false);
-            pauseMenu.SetActive(false);
-            GameController.gameIsPaused = false;
-            GameController.coins = 0;
-            GameController.loadScene("Stage1");
-            player.transform.position = Vector3.zero;
-        }
+            coinTx.text = GameController.coins.ToString();
+            if (Input.GetKeyDown(KeyCode.Escape) && !GameController.gameIsPaused && !caughtMsg.activeSelf)
+            {
+                Pause();
+            }
+            if (Input.GetMouseButtonDown(0) && caughtMsg.activeSelf)
+            {
+                Time.timeScale = 1.0f;
+                caughtMsg.SetActive(false);
+                pauseMenu.SetActive(false);
+                GameController.gameIsPaused = false;
+                GameController.coins = 0;
+                GameController.loadScene("Stage1");
+                player.transform.position = Vector3.zero;
+            }
+        } 
     }
 
     public void Restart()
@@ -70,5 +73,10 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
         GameController.gameIsPaused = false;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

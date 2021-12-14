@@ -34,26 +34,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        #region Teclas de Atalho
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            if(GameController.stage == 1)
-            {
-                GameController.loadScene("Stage2");
-                transform.position = Vector3.zero;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (GameController.stage == 1)
-            {
-                Debug.Log(GameController.concludedStages);
-            }
-        }
-
-        #endregion
-
 
         #region Ajustes de Balanceamento
 
@@ -289,9 +269,17 @@ public class PlayerController : MonoBehaviour
             {
                 GameController.stagePart = 5;
             }
-            else if (transform.position.z >= 68)
+            else if (transform.position.z >= 68 && transform.position.x < 3)
             {
                 GameController.stagePart = 6;
+            }
+            else if (transform.position.z >= 68 && transform.position.x >= 3 && transform.position.x < 20)
+            {
+                GameController.stagePart = 7;
+            }
+            else if (transform.position.z >= 68 && transform.position.x >= 20)
+            {
+                GameController.stagePart = 8;
             }
         }
 
@@ -355,6 +343,12 @@ public class PlayerController : MonoBehaviour
         if(Col.gameObject.tag == "End")
         {
             GameController.loadScene("Stage" + (GameController.stage + 1));
+            if(GameController.stage == 3)
+            {
+                Destroy(GameObject.FindWithTag("MainCamera"));
+                Destroy(GameObject.FindWithTag("HUD"));
+                Destroy(gameObject);
+            }
             transform.position = Vector3.zero;
         }
 

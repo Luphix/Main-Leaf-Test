@@ -127,6 +127,25 @@ public class EnemyController : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
         }
+        else if (enemyType == 5)
+        {
+            if ((transform.localPosition.z >= 4 && transform.localPosition.x <= -6) || ((transform.localPosition.x > -6 && transform.localPosition.x < 6) && transform.localPosition.z >= 4))
+            {
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else if ((transform.localPosition.z <= -4 && transform.localPosition.x >= 6) || ((transform.localPosition.x > -6 && transform.localPosition.x < 6) && transform.localPosition.z <= -4))
+            {
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+            }
+            else if ((transform.localPosition.z >= 4 && transform.localPosition.x >= 6) || ((transform.localPosition.z > -4 && transform.localPosition.z < 4) && transform.localPosition.x >= 6))
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else if ((transform.localPosition.z <= -4 && transform.localPosition.x <= -6) || ((transform.localPosition.z > -4 && transform.localPosition.z < 4) && transform.localPosition.x <= -6))
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+        }
 
     }
 

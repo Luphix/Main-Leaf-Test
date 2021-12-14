@@ -9,7 +9,6 @@ public class CresceBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private bool On = false;
     [SerializeField] private Vector3 Max;
     [SerializeField] private Vector3 Min;
-    public GameObject tx;
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +37,6 @@ public class CresceBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         else if (On == true && gameObject.transform.localScale.x >= Max.x)
         {
             transform.localScale = Max;
-            if (tx != null)
-            {
-                tx.SetActive(true);
-            }
-            
         }
 
         if (On == false && gameObject.transform.localScale.x > Min.x)
@@ -52,11 +46,6 @@ public class CresceBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         else if (On == false && gameObject.transform.localScale.x <= Min.x)
         {
             transform.localScale = Min;
-            if (tx != null)
-            {
-                tx.SetActive(false);
-            }
-            
         }
     }
 

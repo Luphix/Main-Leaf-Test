@@ -49,10 +49,11 @@ public class UIController : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1.0f;
-        pauseMenu.SetActive(false);
-        GameController.gameIsPaused = false;
-        GameController.resetScene();
-        player.transform.position = Vector3.zero;
+        if(pauseMenu)
+            pauseMenu.SetActive(false);
+        if(player)
+            player.transform.position = Vector3.zero;
+        GameController.resetGame();
     }
 
     public void Caught()

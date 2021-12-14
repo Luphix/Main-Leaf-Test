@@ -43,8 +43,21 @@ public static class GameController
 
     public static void resetScene()
     {
-        Scene scene = SceneManager.GetActiveScene(); 
+        Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
         coins = 0;
+    }
+
+    public static void resetGame()
+    {
+        gameIsPaused = false;
+        playerBusy = false;
+        stage = 1;
+        concludedStages = 0;
+        stagePart = 1;
+        puzzleCount = 0;
+        puzzleMaxCount = 2;
+        coins = 0;
+        SceneManager.LoadScene("Stage1");
     }
 }

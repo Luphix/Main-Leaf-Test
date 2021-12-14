@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (interact.GetComponent<Box>().Player == null)
                         {
+                            anim.SetFloat("Forward", 0f);
                             interact.GetComponent<Box>().Player = gameObject;
                             interact.GetComponent<Box>().setOffset();
 
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour
                             {
                                 if (Mathf.Abs(transform.position.z - interact.transform.position.z) < 0.96f)
                                 {
-                                    interact.transform.parent.position += new Vector3(0, 0, 0.01f);    //Código para ajustar o offset da caixa para não empurrar o jogador para trás
+                                    interact.transform.parent.position += new Vector3(0, 0, 0.03f);    //Código para ajustar o offset da caixa para não empurrar o jogador para trás
                                     interact.GetComponent<Box>().setOffset();
                                 }
 
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
                             {
                                 if (Mathf.Abs(transform.position.z - interact.transform.position.z) < 0.96f)
                                 {
-                                    interact.transform.parent.position += new Vector3(0, 0, -0.01f);
+                                    interact.transform.parent.position += new Vector3(0, 0, -0.03f);
                                     interact.GetComponent<Box>().setOffset();
                                 }
                                
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour
                             {
                                 if (Mathf.Abs(transform.position.x - interact.transform.position.x) < 0.96f)
                                 {
-                                    interact.transform.parent.position += new Vector3(-0.01f, 0, 0);
+                                    interact.transform.parent.position += new Vector3(-0.03f, 0, 0);
                                     interact.GetComponent<Box>().setOffset();
                                 }
                                
@@ -98,7 +99,7 @@ public class PlayerController : MonoBehaviour
                             {
                                 if (Mathf.Abs(transform.position.x - interact.transform.position.x) < 0.96f)
                                 {
-                                    interact.transform.parent.position += new Vector3(0.01f, 0, 0);
+                                    interact.transform.parent.position += new Vector3(0.03f, 0, 0);
                                     interact.GetComponent<Box>().setOffset();
                                 }
                               
@@ -296,6 +297,7 @@ public class PlayerController : MonoBehaviour
         interact = null;
         actionTx.text = "";
         transform.localRotation = Quaternion.Euler(0, 0, 0);
+        anim.SetFloat("Forward", 0f);
         anim.SetBool("OnGround", false);
         anim.SetFloat("Jump", 5f);
         jumpVar = 5.5f;

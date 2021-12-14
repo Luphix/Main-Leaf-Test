@@ -460,8 +460,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerMoveSpeed: 1
   PlayerMoveAcceleration: 1
-  PlayerJumpSpeed: 1
+  PlayerJumpHeight: 1
   EnemiesMoveSpeed: 1
+  EnemiesStoppedDuration: 3
+  EnemiesWalkingDuration: 3
   CoinColorByValue:
   - {r: 0, g: 1, b: 0.026485443, a: 1}
   - {r: 0, g: 1, b: 0.9270375, a: 1}
@@ -555,7 +557,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120903920}
   m_LocalRotation: {x: 0.00000008146034, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.79999995, z: -7.42}
+  m_LocalPosition: {x: 0, y: -1.46, z: -7.42}
   m_LocalScale: {x: 4.09, y: 1.57, z: 1.25}
   m_Children: []
   m_Father: {fileID: 495074763}
@@ -1006,8 +1008,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340337187}
   m_LocalRotation: {x: 0.00000008146034, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.33, z: -7.42}
-  m_LocalScale: {x: 4.09, y: 0.1, z: 1.25}
+  m_LocalPosition: {x: 0, y: 1.55, z: -7.42}
+  m_LocalScale: {x: 3.9791613, y: 0.092, z: 1.15}
   m_Children: []
   m_Father: {fileID: 495074763}
   m_RootOrder: 2
@@ -3255,7 +3257,7 @@ GameObject:
   - component: {fileID: 1257914099}
   - component: {fileID: 1257914104}
   m_Layer: 0
-  m_Name: Box
+  m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5017,7 +5019,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2308116406079373428}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.8299999, z: 9.570001}
+  m_LocalPosition: {x: 0, y: 0.9799999, z: 9.570001}
   m_LocalScale: {x: 0.02, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5261,7 +5263,7 @@ GameObject:
   - component: {fileID: 7463300324936994865}
   - component: {fileID: 7463300324936994863}
   m_Layer: 0
-  m_Name: Box
+  m_Name: Box2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

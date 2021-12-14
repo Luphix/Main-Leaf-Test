@@ -37,7 +37,8 @@ public class UIController : MonoBehaviour
             caughtMsg.SetActive(false);
             pauseMenu.SetActive(false);
             GameController.gameIsPaused = false;
-            GameController.resetScene();
+            GameController.coins = 0;
+            GameController.loadScene("Stage1");
             player.transform.position = Vector3.zero;
         }
     }

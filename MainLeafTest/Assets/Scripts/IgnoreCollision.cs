@@ -19,7 +19,7 @@ public class IgnoreCollision : MonoBehaviour
 
     void OnCollisionStay(Collision Col)
     {
-        if(gameObject.name == "Box")
+        if(gameObject.name.Contains("Box"))
         {
             if (Col.gameObject.tag == "Wall")
             {
@@ -31,7 +31,7 @@ public class IgnoreCollision : MonoBehaviour
 
     void OnCollisionExit(Collision Col)
     {
-        if (gameObject.name == "Box")
+        if (gameObject.name.Contains("Box"))
         {
             if (Col.gameObject.tag == "Wall")
             {

@@ -38,11 +38,11 @@ public class EnemyController : MonoBehaviour
         {
             if (enemyStopped)
             {
-                yield return new WaitForSeconds(3f * 60f * Time.deltaTime);
+                yield return new WaitForSeconds(GameController.enemiesStoppedDuration * 60f * Time.deltaTime);
             }
             else
             {
-                yield return new WaitForSeconds(6f * 60f * Time.deltaTime);
+                yield return new WaitForSeconds(GameController.enemiesWalkingDuration * 60f * Time.deltaTime);
             }
             enemyStopped = !enemyStopped;
         }

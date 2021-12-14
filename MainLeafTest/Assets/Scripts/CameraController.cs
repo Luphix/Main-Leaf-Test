@@ -29,6 +29,12 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        if(playerTransform == null)
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            playerTransform = player.transform;
+            playerTransform.gameObject.GetComponent<PlayerController>().cam = gameObject.transform;
+        }
         if (playerTransform)
         {
             if (!GameController.gameIsPaused)

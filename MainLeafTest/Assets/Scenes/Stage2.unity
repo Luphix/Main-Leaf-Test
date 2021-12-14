@@ -7000,6 +7000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 4212829088747282146, guid: 17e28cc7135b7e740880b1ce5dd27cb0, type: 3}
+  value: 1
 --- !u!23 &1031285866
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14614,6 +14615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 4212829088747282146, guid: 17e28cc7135b7e740880b1ce5dd27cb0, type: 3}
+  value: 1
 --- !u!135 &5490807102267679673
 SphereCollider:
   m_ObjectHideFlags: 0

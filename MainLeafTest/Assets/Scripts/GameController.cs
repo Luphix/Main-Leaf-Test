@@ -6,15 +6,19 @@ using UnityEngine.SceneManagement;
 public static class GameController
 {
     public static bool gameIsPaused = false;
+    public static bool playerBusy = false;
     public static int stage = 1;
+    public static int concludedStages = 0;
     public static int stagePart = 1;
     public static int puzzleCount;
     public static int puzzleMaxCount;
     public static int coins = 0;
     public static float playerMoveSpeed;
     public static float playerMoveAcceleration;
-    public static float playerJumpSpeed;
+    public static float playerJumpHeight;
     public static float enemiesMoveSpeed;
+    public static float enemiesStoppedDuration;
+    public static float enemiesWalkingDuration;
     public static Color[] coinColorByValue = new Color[5];
 
     public static void loadScene(string name)
@@ -22,7 +26,15 @@ public static class GameController
         Time.timeScale = 1f;
         
         SceneManager.LoadScene(name);
-        GameController.stage += 1;
+        if (name == "Stage1")
+        {
+            GameController.stage = 1;
+        }
+        else
+        {
+            GameController.stage = 2;
+        }
+            
     }
 
     public static void resetScene()

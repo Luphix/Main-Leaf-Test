@@ -23,6 +23,10 @@ public class PuzzleEvent : MonoBehaviour
         {
             GameController.puzzleCount++;
             Col.GetComponent<Box>().setDestination(transform.position);
+            if(GameController.puzzleCount == GameController.puzzleMaxCount)
+            {
+                GameController.concludedStages += 1;
+            }
         }
     }
 }

@@ -13,6 +13,22 @@ public class Box : MonoBehaviour
     private Vector3 pullDirection;
     private float pullSpeed;
 
+    void Awake()
+    {
+        if(GameController.concludedStages >= 1)
+        {
+            destination = true;
+            if (box.name == "Box1")
+            {
+                box.transform.position = new Vector3(-0.184f, -1.55f, 4.71f);
+            }
+            else if(box.name == "Box2")
+            {
+                box.transform.position = new Vector3(-0.184f, -0.098f, 4.71f);
+            }
+        }
+    }
+
     void Start()
     {
         boxOffset = box.transform.position;
@@ -75,6 +91,10 @@ public class Box : MonoBehaviour
                 }
                 rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
             }
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         }
     }
 

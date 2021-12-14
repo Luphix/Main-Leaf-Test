@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public float PlayerMoveSpeed = 1;
     public float PlayerMoveAcceleration = 1;
-    public float PlayerJumpSpeed = 1;
+    public float PlayerJumpHeight = 1;
     [Range(0, 2)] public float EnemiesMoveSpeed = 1;
+    public float EnemiesStoppedDuration = 3f;
+    public float EnemiesWalkingDuration = 3f;
     public Color[] CoinColorByValue;
 
     void Awake()
@@ -21,10 +23,12 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        GameController.playerJumpSpeed = PlayerJumpSpeed;
+        GameController.playerJumpHeight = PlayerJumpHeight;
         GameController.playerMoveAcceleration = PlayerMoveAcceleration;
         GameController.playerMoveSpeed = PlayerMoveSpeed;
         GameController.enemiesMoveSpeed = EnemiesMoveSpeed;
+        GameController.enemiesStoppedDuration = EnemiesStoppedDuration;
+        GameController.enemiesWalkingDuration = EnemiesWalkingDuration;
         for (int i = 0; i < CoinColorByValue.Length; i++)
         {
             GameController.coinColorByValue[i] = CoinColorByValue[i];
